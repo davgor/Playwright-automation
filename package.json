@@ -9,5 +9,8 @@
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.33.0"
+  },
+  "dependencies": {
+    "cloudmailin": "^0.0.3"
   }
 }

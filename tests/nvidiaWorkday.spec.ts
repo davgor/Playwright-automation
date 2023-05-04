@@ -7,8 +7,11 @@ test('nvidia auto apply', async ({ page }) => {
     //really long URL but it contains the query of the job site
     await page.goto(nvidiaUrl);
     await page.click('[data-automation-id="utilityButtonSignIn"]');
-    await page.type('[data-automation-id="email"]', credentials.username)
-    await page.type('[data-automation-id="password"]', credentials.password)
-    await page.click('[data-automation-id="signInSubmitButton"]')
-    await page.waitForLoadState('networkidle')
+    await page.type('[data-automation-id="email"]', credentials.username);
+    await page.type('[data-automation-id="password"]', credentials.password);
+    await page.click('[data-automation-id="signInSubmitButton"]', { force: true });
+    await page.waitForLoadState('networkidle');
+    let job_count = await page.locator('[data-automation-id="jobFoundText"]').innerText();
+    let first_job_date = await page.locator('[data-automation-id="postedOn"] >> dd').first().innerText();
+    console.log(`${job_count} || ${first_job_date}`)
 });
