@@ -1,6 +1,8 @@
 name: Nvidia job checker
 
 on:
+  workflow_dispatch:
+    branch: main
   schedule:
     - cron: "0 0 * * *"
 
